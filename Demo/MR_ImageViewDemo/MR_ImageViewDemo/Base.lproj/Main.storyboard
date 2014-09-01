@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="MR_ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBy-o8-xSE" customClass="MR_ImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="aUe-Qz-6Bf"/>
+                                    <constraint firstAttribute="width" constant="100" id="p6v-ni-BWI"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JYx-yk-jFr" customClass="MR_ImageView">
+                                <rect key="frame" x="20" y="129" width="280" height="280"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JYx-yk-jFr" firstAttribute="top" secondItem="iBy-o8-xSE" secondAttribute="bottom" constant="29" id="02v-de-STJ"/>
+                            <constraint firstAttribute="trailing" secondItem="JYx-yk-jFr" secondAttribute="trailing" constant="20" symbolic="YES" id="9ZP-66-z0E"/>
+                            <constraint firstItem="iBy-o8-xSE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="BII-k4-JO0"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="JYx-yk-jFr" secondAttribute="bottom" constant="159" id="CDe-mL-t6u"/>
+                            <constraint firstItem="iBy-o8-xSE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="CIh-Mk-dEJ"/>
+                            <constraint firstItem="JYx-yk-jFr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="tka-JX-j8g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="iBy-o8-xSE" id="WiS-nR-jSo"/>
+                        <outlet property="secondImageView" destination="JYx-yk-jFr" id="pfU-tL-t21"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
