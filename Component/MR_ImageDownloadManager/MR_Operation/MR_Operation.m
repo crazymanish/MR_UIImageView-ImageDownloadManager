@@ -31,6 +31,7 @@
 {
     MR_DownloadImageCompletionBlock completionBlock;
     MR_DownloadImageProgressBlock progressBlock;
+    NSOperationQueue *operationQueue;
 }
 
 /**
@@ -69,8 +70,9 @@
  progressHandler ---->Download-Image CompletionBlock
  */
 -(instancetype)initWithImageUrl:(NSURL *)url
-  withCompletionHandler:(MR_DownloadImageCompletionBlock)completionHandler
-withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler
+              withOperationQueue:(NSOperationQueue *)queue
+          withCompletionHandler:(MR_DownloadImageCompletionBlock)completionHandler
+    withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler;
 {
     self = [super init];
     if (!self) {
@@ -82,7 +84,15 @@ withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler
     _request = urlRequest;
     completionBlock=completionHandler;
     progressBlock=progressHandler;
+    operationQueue=queue;
 
+    __weak MR_Operation *weakSelf = self;
+    __weak NSURLRequest *weakUrlRequest = _request;
+    [self setCompletionBlock: ^{
+        [weakSelf cancel];
+        NSLog(@"\n\n Connection released for URL: \n %@",weakUrlRequest.URL);
+    }];
+    
     return self;
 }
 
@@ -134,7 +144,8 @@ withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler
             _executing = YES;
             _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
             _responseData = [[NSMutableData alloc] init];
-            [_connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+           // [_connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+            [_connection setDelegateQueue:operationQueue];
             [_connection start];
             [self didChangeValueForKey:@"isExecuting"];
         }

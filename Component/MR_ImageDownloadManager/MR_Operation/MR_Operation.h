@@ -62,7 +62,8 @@
  progressHandler ---->Download-Image CompletionBlock
  */
 -(instancetype)initWithImageUrl:(NSURL *)url
-  withCompletionHandler:(MR_DownloadImageCompletionBlock)completionHandler
-withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler;
+              withOperationQueue:(NSOperationQueue *)queue
+          withCompletionHandler:(MR_DownloadImageCompletionBlock)completionHandler
+    withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler;
 
 @end

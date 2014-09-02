@@ -98,6 +98,7 @@ withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler
 {
     //Create Operation
     MR_Operation *operation=[[MR_Operation alloc] initWithImageUrl:url
+                                                 withOperationQueue:_downloadQueue
                                              withCompletionHandler:completionHandler
                                        withDownloadProgressHandler:progressHandler];
     
@@ -112,9 +113,9 @@ withDownloadProgressHandler:(MR_DownloadImageProgressBlock)progressHandler
 {
     if ([keyPath isEqualToString:@"isFinished"]){
         MR_Operation *operation = object;
-        if (operation.finished){
+        if (operation.isFinished){
             [operation removeObserver:self forKeyPath:keyPath];
-            NSLog(@"Operation has been completed for URL =%@",operation.request.URL);
+            NSLog(@"\n\n Operation has been completed for URL =%@",operation.request.URL);
         }
     }
 }
